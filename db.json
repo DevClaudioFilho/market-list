@@ -1,0 +1,19 @@
+{
+  "markets": [
+    {
+      "name": "Extra",
+      "id": 1
+    },
+    {
+      "name": "merado 2",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "name": "teste",
+      "id": 1,
+      "market_id": 1
+    }
+  ]
+}
