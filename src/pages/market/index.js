@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {Container} from './styles'
+import {Container, MyButton} from './styles'
 import {Link} from 'react-router-dom'
 import api from "../../services/api"
 
@@ -20,9 +20,14 @@ export default function Markets(){
     
 
     async function handleSubmint(){
-        const response =await api.post('markets',formValue)
-        setMarkets([...markets,response.data])
-        setformValue({name:''})
+        if(formValue.name ===""){
+            alert("not defined")
+        }
+        else{
+            const response = await api.post('markets',formValue)
+            setMarkets([...markets,response.data])
+            setformValue({name:''})
+        }
     }
 
     async function handleDelete(id){
@@ -34,27 +39,31 @@ export default function Markets(){
         <Container>
             <h1>Mercados</h1>
             <input
+                required
                 placeholder='Cadastrar Mercado'
                 label='mercado'
                 value={formValue.name}
                 onChange={(event) => setformValue({...formValue, name: event.target.value})}
             
             />
-            <button type='button'
+            <MyButton 
+                color='green'
+                type='button'
                 onClick={(handleSubmint)}
             >
                 Send
-            </button>
+            </MyButton>
             <ul>
                 {markets.map(market=>(
                         <li 
                         check={market.check}
                         key={market.id}>
                             <Link to={`/market/${market.id}/products`}>{market.name}</Link>
-                            <button 
+                            <MyButton 
+                            color='red'
                             type='button'
                             onClick={() => handleDelete(market.id)} 
-                            >X</button>
+                            >X</MyButton>
                         </li>
                     )
                 )}

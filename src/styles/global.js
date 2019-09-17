@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 *{
     margin: 0;
     padding:0;
@@ -22,7 +23,7 @@ export default createGlobalStyle`
 html, border-style, #root{
     height:100%;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(-90deg, #7159c1, #ab59c1);
+    background: linear-gradient(-90deg, #00d2d3, #54a0ff);
 }
 
 body{

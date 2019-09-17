@@ -4,13 +4,11 @@ import {darken} from 'polished'
 export const Container = styled.div` 
     margin-top:20px;
     font-size:20px;
-
     h1{
         font-family: 'Lobster', cursive;
         color: #000000;
         padding:10px;
         font-weight: normal;
-        cursor:default;
     }
 
     ul,li{
