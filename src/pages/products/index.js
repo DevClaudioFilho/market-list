@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import {MdClose} from 'react-icons/md'
 import api from "../../services/api"
 import { Container, MyButton } from './styles';
+import { toast } from 'react-toastify';
 
 // import { Container } from './styles';
 
@@ -20,12 +21,14 @@ export default function Products(props) {
 
   async function handleSubmint(){
     if(formValue.name ===""){
-      alert("not defined")
+      toast.error('Products not defined')
     }
     else{
     const response = await api.post('products',formValue)
     SetProducts([...products,response.data])
-    setformValue({name:''})}
+    setformValue({name:''})
+    toast.success('registered confirmed')
+  }
 }
 
   async function handleDelete(id){

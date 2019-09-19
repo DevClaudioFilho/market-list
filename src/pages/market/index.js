@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import {Container, MyButton} from './styles'
 import {Link} from 'react-router-dom'
 import api from "../../services/api"
-
+import { toast } from 'react-toastify';
 
 export default function Markets(){
 
@@ -21,18 +21,20 @@ export default function Markets(){
 
     async function handleSubmint(){
         if(formValue.name ===""){
-            alert("not defined")
+            toast.error('Products not defined')
         }
         else{
             const response = await api.post('markets',formValue)
             setMarkets([...markets,response.data])
             setformValue({name:''})
+            toast.success('Registered confirmed')
         }
     }
 
     async function handleDelete(id){
         api.delete(`markets/${id}`)
         setMarkets(markets.filter(markets=> markets.id !== id))
+        toast.error('Product deleted')
     }
 
     return(
